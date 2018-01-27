@@ -1,10 +1,10 @@
 import { getEles, getTouch } from './utils';
 
 const defaultProps = {
-  selector: '*'
+  selector: '',
 };
 
-const getProps = (props = '*') => {
+const getProps = (props) => {
   if (!props) {
     return defaultProps;
   }
@@ -18,10 +18,6 @@ const getProps = (props = '*') => {
 
 class Fondle {
   constructor(props) {
-    this.onTouchStart = this.onTouchStart.bind(this);
-    this.onTouchMove = this.onTouchMove.bind(this);
-    this.onTouchEnd = this.onTouchEnd.bind(this);
-
     this.init(props);
   }
 
@@ -31,7 +27,7 @@ class Fondle {
   list = [];
   startY = 0;
 
-  onTouchStart(event) {
+  onTouchStart = (event) => {
     const touch = getTouch(event);
     const { pageY = 0 } = touch;
     const { currentTarget = {} } = event;
@@ -40,17 +36,17 @@ class Fondle {
     this.list.push(currentTarget);
   }
 
-  onTouchMove(event) {
+  onTouchMove = (event) => {
     const res = this._shouldScroll(event);
 
     !res && event.preventDefault();
   }
 
-  onTouchEnd(event) {
+  onTouchEnd = (event) => {
     this.list = []; 
   }
 
-  _shouldScroll(event) {
+  _shouldScroll = (event) => {
     const { list = [], startY = 0 } = this;
 
     const touch = getTouch(event);
@@ -72,7 +68,7 @@ class Fondle {
     });
   }
 
-  on() {
+  on = () => {
     const { eles = [] } = this;
 
     eles.forEach((ele = {}) => {
@@ -82,7 +78,7 @@ class Fondle {
     });
   }
 
-  off() {
+  off = () => {
     const { eles = [] } = this;
 
     eles.forEach((ele = {}) => {
@@ -105,7 +101,7 @@ class Fondle {
     this.refresh();
   }
 
-  refresh() {
+  refresh = () => {
     const { props = {} } = this;
     const { selector } = props;
 
@@ -118,6 +114,18 @@ class Fondle {
   init(props) {
     if (typeof document === 'undefined' || typeof window === 'undefined') {
       return null;
+    }
+
+    if (!('ontouchstart' in document.documentElement)) {
+      return null;
+    }
+
+    props = getProps(props);
+
+    const { selector } = props;
+
+    if (!selector) {
+      return console.warn('A container selector is necessary, this container show have scrollbar and 100% height to cover the screen');
     }
 
     this.setProps(props);
