@@ -104,7 +104,7 @@ observerOff.observe(document.body, {
   <body>
     <div id="container">
       <div class="content">
-        { ... }
+        ...
       </div>
     </div>
   </body>
