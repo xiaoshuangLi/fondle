@@ -1,5 +1,5 @@
 # fondle
-Prevent mobile page scroll when touch.
+Prevent mobile browser page scroll when touch.(Just like: webchat, Safari ...);
 
 [Demo](https://codepen.io/xiaoshuang/pen/KZOgpW)
 
