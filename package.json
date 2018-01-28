@@ -1,6 +1,6 @@
 {
   "name": "fondle",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Prevent mobile page scroll when touch.",
   "main": "lib/index.js",
   "engines": {
