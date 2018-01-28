@@ -105,7 +105,7 @@ class Fondle {
     const { props = {} } = this;
     const { selector } = props;
 
-    this.eles = getEles(selector);
+    this.eles = getEles(`${selector}, ${selector} *`);
 
     this.off();
     this.on();
