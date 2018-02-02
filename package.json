@@ -23,9 +23,7 @@
   "bugs": {
     "url": "https://github.com/xiaoshuangLi/fondle/issues"
   },
-  "dependencies": {
-    "loader-utils": "^1.1.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "webpack": ">= 3"
   },
